@@ -63,7 +63,7 @@ console.log(makePersonObject(10, "Doren", "dorenfortune@fortune.com"));
  * the returned value should look like `Hello, my name is Leia`.
 */
 function getName(person){
-  let message ="Hello, my name is " + person.name;
+  let message =`Hello, my name is ${person.name}`;
   return message;
 
 }
@@ -174,7 +174,7 @@ function getCarInfoByIndex(inventory, index) {
 function getLastCarInfo(inventory) {
   const main = inventory.length-1 ; 
     return `This is a ${inventory[main].car_make} ${inventory[main].car_model}`;
-}
+}   
 
 /**
  * ### Challenge `getCarInfoById`
@@ -265,13 +265,25 @@ function getOlderCars(inventory, maxYear) {
 */
 function getGermanCars(inventory) {
   let germanCars = [];
-  for(let i = 0; i < inventory.length; i++){
-    if(inventory[i].car_make === 'Audi'|| inventory[i].car_make === 'Mercedes-Benz'|| inventory[i].car_make === 'Volkswagon'|| inventory[i].car_make === 'BMW')
-    germanCars.push(inventory[i])
+  let germanMakes = ['Audi', 'Mercedes-Benz', 'Volkswagen', 'BMW' ];
+  for (let i = 0; i < inventory.length; i++){
+    if(germanMakes.includes(inventory[i].car_make)){
+      germanCars.push(inventory[i])
+    }
   }
-return germanCars;
+  return germanCars;
+  // for(let i = 0; i < inventory.length; i++){
+  //   if(inventory[i].car_make === "Audi" || inventory[i].car_make === "Mercades-Benz"|| inventory[i].car_make === "Volkswagen"|| inventory[i].car_make === "BMW"){
+
+    
+  //   germanCars.push(inventory[i]) 
+  //   }
+  //   }
+  //   return germanCars; 
+    
+  }
  
-}
+
 
 /**
  * ### Challenge refactor to arrow functions
@@ -291,9 +303,9 @@ return germanCars;
  *   return num * 2
  * }
 */
-const sum = null; // code here!
-const addFive = null; // code here!
-const argTimesTwo = null; // code here!
+const sum = ((a,b) => a + b) 
+const addFive = ((num) => num + 5); // code here!
+const argTimesTwo = ((num) => num * 2); // code here!
 
 /**
  * ### Challenge `carMaker`
@@ -308,9 +320,19 @@ const argTimesTwo = null; // code here!
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
-  /* code here */
+function carMaker(odometer) {
+  const car = {
+    odometer: odometer,
+    drive: function(distance){
+      return car.odometer += distance
+    }
+
+  }
+  return car
 }
+
+
+
 
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
